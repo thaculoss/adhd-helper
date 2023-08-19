@@ -1,0 +1,36 @@
+<idea-plugin>
+    <id>com.your.company.unique.plugin.id</id>
+    <name>adhd小助手</name>
+    <version>demo</version>
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="173.0"/>
+
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.python-pro-capable</depends>
+
+
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationService serviceInterface="service.AlertService"
+                            serviceImplementation="service.impl.AlertServiceImpl"/>
+        <applicationService serviceInterface="service.ScheduledService"
+                            serviceImplementation="service.impl.ScheduledServiceImpl"/>
+    </extensions>
+    <application-components>
+        <component>
+            <implementation-class>compontent.SampleDialogWrapper</implementation-class>
+        </component>
+    </application-components>
+    <actions>
+        <!-- Add your actions here -->
+        <action id="Assistant.Setting" class="action.SettingAction" text="TRACE ON" description="小助手设置">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="alt c"/>
+        </action>
+        <action id="action.StopAction" class="action.StopAction" text="EL PSY KONGROO" description="让小助手停止提示">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="alt s"/>
+        </action>
+    </actions>
+
+</idea-plugin>
